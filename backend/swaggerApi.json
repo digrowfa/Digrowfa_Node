@@ -1,0 +1,728 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "digrowfa",
+    "description": "Digrowfa API in NodeJs using Swagger",
+    "contact": {
+      "email": "abdulmanafp1966@gmail.com"
+    },
+    "license": {
+      "name": "DIGROWFA",
+      "url": "https://www.digrowfa.com"
+    }
+  },
+  "servers": [
+    {
+      "url": "http://localhost:5000",
+      "description": "Development Environment"
+    },
+    {
+      "url": "http://localhost:3000",
+      "description": "Demo Environment"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Course",
+      "description": ""
+    },
+    {
+      "name": "User",
+      "description": ""
+    },
+    {
+      "name": "Categories",
+      "description": ""
+    },
+    {
+      "name": "Language",
+      "description": ""
+    },
+    {
+      "name": "Offer",
+      "description": ""
+    },
+    {
+      "name": "Batch",
+      "description": ""
+    },
+    {
+      "name": "Enquiry",
+      "description": ""
+    },
+    {
+      "name": "Lesson",
+      "description": ""
+    }
+  ],
+  "paths": {
+    "/api/course": {
+      "get": {
+        "tags": [
+          "Course"
+        ],
+        "summary": "GET THE TOTAL COURSES",
+        "description": "All courses",
+        "responses": {
+          "200": {
+            "description": "Status True"
+          },
+          "401": {
+            "description": "Unauthorized User"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Course"
+        ],
+        "summary": "ADDS A NEW COURSE",
+        "produces": "application/json",
+        "consumes": "multipart/form-data",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "example": "my Course"
+                  },
+                  "description": {
+                    "type": "string",
+                    "example": "this a course about MERN stack"
+                  },
+                  "category_id": {
+                    "type": "objectId",
+                    "example": "62f4d3e954dcb4be011ed0c7"
+                  },
+                  "instructor_id": {
+                    "type": "objectId",
+                    "example": "62e3618facbb5c77dc0341fa"
+                  },
+                  "duration": {
+                    "type": "string",
+                    "example": "3 months"
+                  },
+                  "language_id": {
+                    "type": "objectId",
+                    "example": "62f4adfe78e329ec4807b99e"
+                  },
+                  "image": {
+                    "type": "file",
+                    "example": "62e765e1fea9c14e2840e39c"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Verified SuccessFully"
+          },
+          "401": {
+            "description": "Unauthorized access to API"
+          }
+        }
+      }
+    },
+    "/api/course/category/{id}": {
+      "get": {
+        "tags": [
+          "Course"
+        ],
+        "summary": "Getting course according to category",
+        "description": "Getting course according to category",
+        "produces": "application/json",
+        "consumes": "application/json",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Category Id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "62f4f1c4c400948b61283d8a"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Verified SuccessFully"
+          },
+          "401": {
+            "description": "Unauthorized access to API"
+          }
+        }
+      }
+    },
+    "/api/course/{id}": {
+      "delete": {
+        "tags": [
+          "Course"
+        ],
+        "summary": "DELETE A COURSE",
+        "description": "for testing the swagger doc",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Course Id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "62eca1b3cb141e0345491e1f"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Status True"
+          },
+          "401": {
+            "description": "Unauthorized User"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Course"
+        ],
+        "summary": "GET DETAILS OF A COURSE",
+        "description": "for testing the swagger doc",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Course Id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "62eca1b3cb141e0345491e1f"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Status True"
+          },
+          "401": {
+            "description": "Unauthorized User"
+          }
+        }
+      }
+    },
+    "/api/user/signup/email": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Signup step-1",
+        "description": "Email enrolling for sign_up",
+        "produces": "application/json",
+        "consumes": "application/json",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "type": "object"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "example": "abdulmanaf1996@gmail.com"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Verified SuccessFully"
+          },
+          "401": {
+            "description": "Unauthorized access to API"
+          }
+        }
+      }
+    },
+    "/api/user/signup": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Signup step-2",
+        "description": "Email & Passcode for sign_up",
+        "produces": "application/json",
+        "consumes": "application/json",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "type": "object"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "example": "abdulmanaf1996@gmail.com"
+                  },
+                  "password": {
+                    "type": "string",
+                    "example": "123456xy"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Verified SuccessFully"
+          },
+          "401": {
+            "description": "Unauthorized access to API"
+          }
+        }
+      }
+    },
+    "/api/user/signin": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Signup sign-in",
+        "description": "Email & Passcode for sign_in",
+        "produces": "application/json",
+        "consumes": "application/json",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "type": "object"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "example": "abdulmanaf1996@gmail.com"
+                  },
+                  "password": {
+                    "type": "string",
+                    "example": "123456xy"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Verified SuccessFully"
+          },
+          "401": {
+            "description": "Unauthorized access to API"
+          }
+        }
+      }
+    },
+    "/api/category": {
+      "get": {
+        "tags": [
+          "Categories"
+        ],
+        "summary": "get all categories",
+        "description": "for testing the swagger doc",
+        "responses": {
+          "200": {
+            "description": "Status True"
+          },
+          "401": {
+            "description": "Unauthorized User"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Categories"
+        ],
+        "summary": "get all categories",
+        "description": "for testing the swagger doc",
+        "responses": {
+          "200": {
+            "description": "Status True"
+          },
+          "401": {
+            "description": "Unauthorized User"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "example": "Category A"
+                  },
+                  "description": {
+                    "type": "string",
+                    "example": ""
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/language": {
+      "get": {
+        "parameters": [
+          {
+            "name": "x-client-id",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "properties": {
+                "x-client-id": {
+                  "type": "string",
+                  "example": "XXXXXXXXXXXXXXXXX"
+                }
+              }
+            }
+          }
+        ],
+        "tags": [
+          "Language"
+        ],
+        "summary": "get all languages",
+        "description": "for testing the swagger doc",
+        "responses": {
+          "200": {
+            "description": "Status True"
+          },
+          "401": {
+            "description": "Unauthorized User"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Language"
+        ],
+        "summary": "get all Languages",
+        "description": "for testing the swagger doc",
+        "responses": {
+          "200": {
+            "description": "Status True"
+          },
+          "401": {
+            "description": "Unauthorized User"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "example": "Hindi"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/offer": {
+      "get": {
+        "parameters": [
+          {
+            "name": "x-client-id",
+            "in": "header",
+            "schema": {
+              "type": "string",
+              "properties": {
+                "x-client-id": {
+                  "type": "string",
+                  "example": "XXXXXXXXXXXXXXXXX"
+                }
+              }
+            }
+          }
+        ],
+        "tags": [
+          "Offer"
+        ],
+        "summary": "get all Offers",
+        "description": "for testing the swagger doc",
+        "responses": {
+          "200": {
+            "description": "Status True"
+          },
+          "401": {
+            "description": "Unauthorized User"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Offer"
+        ],
+        "summary": "create new offer",
+        "description": "for testing the swagger doc",
+        "responses": {
+          "200": {
+            "description": "Status True"
+          },
+          "401": {
+            "description": "Unauthorized User"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "example": "My offer 123"
+                  },
+                  "discount": {
+                    "type": "number",
+                    "example": "12"
+                  },
+                  "batch_id": {
+                    "type": "string",
+                    "example": "62e4c41695628564f95320ac"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/batch": {
+      "get": {
+        "parameters": [
+          {
+            "name": "x-client-id",
+            "in": "header",
+            "schema": {
+              "type": "string",
+              "properties": {
+                "x-client-id": {
+                  "type": "string",
+                  "example": "XXXXXXXXXXXXXXXXX"
+                }
+              }
+            }
+          }
+        ],
+        "tags": [
+          "Batch"
+        ],
+        "summary": "get all batches",
+        "description": "for testing the swagger doc",
+        "responses": {
+          "200": {
+            "description": "Status True"
+          },
+          "401": {
+            "description": "Unauthorized User"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Batch"
+        ],
+        "summary": "create new batch",
+        "description": "for testing the swagger doc",
+        "responses": {
+          "200": {
+            "description": "Status True"
+          },
+          "401": {
+            "description": "Unauthorized User"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "example": "My Batch"
+                  },
+                  "startDate": {
+                    "type": "date",
+                    "example": "01/01/2001"
+                  },
+                  "endDate": {
+                    "type": "date",
+                    "example": "01/01/2002"
+                  },
+                  "course_d": {
+                    "type": "string",
+                    "example": "62e4c41695628564f95320ac"
+                  },
+                  "price": {
+                    "type": "number",
+                    "example": "1000"
+                  },
+                  "discountPrice": {
+                    "type": "number",
+                    "example": "10"
+                  },
+                  "instructor_id": {
+                    "type": "ObjectId",
+                    "example": "62e4c41695628564f95320ac"
+                  },
+                  "language_id": {
+                    "type": "ObjectId",
+                    "example": "62e765c8fea9c14e2840e397"
+                  },
+                  "isPaid": {
+                    "type": "boolean",
+                    "example": "true"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/batch/{id}": {
+      "get": {
+        "tags": [
+          "Batch"
+        ],
+        "summary": "DETAILS OF A BATCH",
+        "description": "for testing the swagger doc",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "batch Id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "62eca1b3cb141e0345491e1f"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Status True"
+          },
+          "401": {
+            "description": "Unauthorized User"
+          }
+        }
+      }
+    },
+    "/api/enquiry": {
+      "get": {
+        "tags": [
+          "Enquiry"
+        ],
+        "summary": "get all enquiries",
+        "description": "for testing the swagger doc",
+        "responses": {
+          "200": {
+            "description": "Status True"
+          },
+          "401": {
+            "description": "Unauthorized User"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Enquiry"
+        ],
+        "summary": "create new enquiry",
+        "description": "for testing the swagger doc",
+        "responses": {
+          "200": {
+            "description": "Status True"
+          },
+          "401": {
+            "description": "Unauthorized User"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "example": "John"
+                  },
+                  "batch": {
+                    "type": "ObjectId",
+                    "example": "62e4c41695628564f95320ac"
+                  },
+                  "mobile": {
+                    "type": "string",
+                    "example": "7306172559"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "name": "project-one",
+  "type": "module",
+  "scripts": {
+    "test": "npx jest",
+    "start": "nodemon backend/server",
+    "client": "npm start --prefix frontend",
+    "dev": "concurrently \"npm run start\" \"npm run client\""
+  },
+  "dependencies": {
+    "aws-sdk": "^2.1185.0",
+    "axios": "^0.27.2",
+    "bcrypt": "^5.0.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "express-async-handler": "^1.2.0",
+    "express-validator": "^6.14.2",
+    "js-sha256": "^0.9.0",
+    "jsonwebtoken": "^8.5.1",
+    "moment": "^2.29.4",
+    "mongoose": "^6.4.6",
+    "multer": "^1.4.4",
+    "multer-s3": "^2.10.0",
+    "multer-sharp-s3": "^0.2.5",
+    "node-mailjet": "^5.1.1",
+    "razorpay": "^2.8.2",
+    "shortid": "^2.2.16",
+    "slugify": "^1.6.5",
+    "swagger-ui-express": "^4.5.0"
+  },
+  "devDependencies": {
+    "concurrently": "^7.3.0",
+    "jest": "^28.1.3",
+    "nodemon": "^2.0.19",
+    "supertest": "^6.2.4"
+  }
+}
